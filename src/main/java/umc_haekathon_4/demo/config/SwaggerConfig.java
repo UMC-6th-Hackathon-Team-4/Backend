@@ -12,21 +12,24 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI UMCstudyAPI() {
+    public OpenAPI treasureAPI() {
         Info info = new Info()
-                .title("UMC 6th Hackarthon API") // API의 제목
-                .description("UMC 6th Hackarthon API 명세서") // API에 대한 설명
+                .title("Treasure Box API")
+                .description("Treasure Box API 명세서")
                 .version("1.0.0"); // API의 버전
 
-        String jwtSchemeName = "JWT TOKEN";
-        // API 요청 헤더에 인증 정보 포함
-        SecurityRequirement securityRequirement = new SecurityRequirement().addList(jwtSchemeName);
-        // SecuritySchemes 등록
+        String securitySchemeName = "Bearer Auth"; // 보안 스키마 이름 정의
+        SecurityScheme securityScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP) // HTTP 보안 스키마
+                .scheme("bearer") // Bearer 유형
+                .bearerFormat("JWT"); // JWT 형식 사용
+
+        // 보안 요구 사항 추가
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(securitySchemeName);
+
+        // 컴포넌트에 보안 스키마 등록
         Components components = new Components()
-                .addSecuritySchemes(jwtSchemeName, new SecurityScheme()
-                        .type(io.swagger.v3.oas.models.security.SecurityScheme.Type.HTTP)
-                        .scheme("bearer")
-                        .bearerFormat(jwtSchemeName));
+                .addSecuritySchemes(securitySchemeName, securityScheme);
 
         return new OpenAPI()
                 .info(info)
