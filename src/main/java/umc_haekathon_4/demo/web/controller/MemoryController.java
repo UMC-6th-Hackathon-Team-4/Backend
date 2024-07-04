@@ -15,7 +15,7 @@ import umc_haekathon_4.demo.web.dto.MemoryResponseDTO;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class MemoryController {
