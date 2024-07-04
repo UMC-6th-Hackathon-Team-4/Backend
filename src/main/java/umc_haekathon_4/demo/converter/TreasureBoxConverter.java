@@ -14,6 +14,7 @@ public class TreasureBoxConverter {
         treasureBox.setLocation(createTreasureboxDTO.getLocation());
         treasureBox.setBody(createTreasureboxDTO.getBody());
         treasureBox.setDeadline(createTreasureboxDTO.getDeadline());
+        treasureBox.setUser(user);
         return treasureBox;
     }
 
