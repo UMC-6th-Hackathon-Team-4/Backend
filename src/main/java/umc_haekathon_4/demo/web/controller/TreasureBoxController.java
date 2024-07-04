@@ -1,5 +1,6 @@
 package umc_haekathon_4.demo.web.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,7 @@ public class TreasureBoxController {
     /*
     // 보물상자 위치
     @GetMapping("/treasurebox/{id}/location")
+    @Operation(summary = "보물 상자 위치", description = "보물 상자 위치")
     public ApiResponse<String> getLocation(@PathVariable Long id) {
         double[] location = treasureBoxService.getLocation(id);
         return ApiResponse.onSuccess(location);
@@ -55,6 +57,7 @@ public class TreasureBoxController {
 
     // 전체 수락 후 보물상자 열람
     @PostMapping("/treasurebox/{id}/all_accept")
+    @Operation(summary = "보물 상자 열람", description = "전체가 수락하고나면 보물 상자 열람")
     public ApiResponse<TreasureBoxResponseDTO> acceptAll(@PathVariable Long id) {
         TreasureBoxResponseDTO treasureBox = treasureBoxService.acceptAll(id);
         return ApiResponse.onSuccess(treasureBox);
@@ -62,6 +65,7 @@ public class TreasureBoxController {
 
     // 보물상자 열람 상태 변경
     @PatchMapping("/treasurebox/{id}/status")
+    @Operation(summary = "보물상자 열람 상태 변경")
     public ApiResponse<TreasureBoxResponseDTO> updateStatus(@PathVariable Long id, @RequestBody @Valid TreasureBoxRequestDTO.UpdateStatusDTO request) {
         TreasureBoxResponseDTO treasureBox = treasureBoxService.updateStatus(id, request);
         return ApiResponse.onSuccess(treasureBox);
@@ -69,6 +73,7 @@ public class TreasureBoxController {
 
     // 보물 상자 기한 미루기
     @PatchMapping("/treasurebox/{id}/delay")
+    @Operation(summary = "보물 상자 기한 미루기")
     public ApiResponse<TreasureBoxResponseDTO> delayDeadline(@PathVariable Long id, @RequestBody @Valid TreasureBoxRequestDTO.UpdateDeadlineDTO request) {
         TreasureBoxResponseDTO treasureBox = treasureBoxService.delayDeadline(id, request);
         return ApiResponse.onSuccess(treasureBox);

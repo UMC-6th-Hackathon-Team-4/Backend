@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
+
     @Bean
     public OpenAPI treasureAPI() {
         Info info = new Info()
@@ -33,6 +34,34 @@ public class SwaggerConfig {
 
         return new OpenAPI()
                 .info(info)
+                .addSecurityItem(securityRequirement)
+                .components(components);
+    }
+  
+ 
+    @Bean
+    public OpenAPI memoryAPI() {
+        Info apiInfo = new Info()
+                .title("Memory Management API") // API의 제목
+                .description("API to manage memories in UMC Hackathon Project") // API에 대한 설명
+                .version("1.0.0"); // API의 버전
+
+        String securitySchemeName = "Bearer Auth"; // 보안 스키마 이름 정의
+        SecurityScheme securityScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP) // HTTP 보안 스키마
+                .scheme("bearer") // Bearer 유형
+                .bearerFormat("JWT"); // JWT 형식 사용
+
+        // 보안 요구 사항 추가
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(securitySchemeName);
+
+        // 컴포넌트에 보안 스키마 등록
+        Components components = new Components()
+                .addSecuritySchemes(securitySchemeName, securityScheme);
+
+        // OpenAPI 객체 생성 및 설정
+        return new OpenAPI()
+                .info(apiInfo)
                 .addSecurityItem(securityRequirement)
                 .components(components);
     }

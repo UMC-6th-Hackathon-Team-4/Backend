@@ -1,7 +1,6 @@
 package umc_haekathon_4.demo.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import umc_haekathon_4.demo.converter.TreasureBoxConverter;
 import umc_haekathon_4.demo.domain.TreasureBox;
@@ -57,7 +56,7 @@ public class TreasureBoxService {
         TreasureBox treasureBox = treasureBoxRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
 
-        treasureBox.setStatus("accepted");
+        treasureBox.setStatus("UNLOCK");
 
         treasureBox = treasureBoxRepository.save(treasureBox);
         return TreasureBoxConverter.toDTO(treasureBox);

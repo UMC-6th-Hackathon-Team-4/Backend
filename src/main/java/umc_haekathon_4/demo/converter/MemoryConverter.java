@@ -12,16 +12,20 @@ import java.util.List;
 public class MemoryConverter {
 
     public static Memory convertToEntity(MemoryRequestDTO.CreateMemoryDto request){
+        TreasureBox treasureBox=new TreasureBox();
+        treasureBox.setId(request.getTreasureBoxId());
+
         return  Memory.builder()
                 .title(request.getTitle())
                 .memo(request.getMemo())
+                .treasureBox(treasureBox)
                 .images(new ArrayList<>()).build();
 
     }
 
     public static MemoryResponseDTO convertToDto(Memory memory){
         return MemoryResponseDTO.builder()
-                .id(memory.getId())
+                .memoryId(memory.getId())
                 .createdDate(memory.getCreatedAt())
                 .build();
 
