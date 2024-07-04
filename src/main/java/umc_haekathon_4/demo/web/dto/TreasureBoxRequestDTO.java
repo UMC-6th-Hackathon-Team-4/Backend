@@ -2,6 +2,7 @@ package umc_haekathon_4.demo.web.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TreasureBoxRequestDTO {
@@ -39,6 +40,6 @@ public class TreasureBoxRequestDTO {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class UpdateDeadlineDTO {
-        private LocalDateTime newDeadline;
+        private LocalDate newDeadline;
     }
 }

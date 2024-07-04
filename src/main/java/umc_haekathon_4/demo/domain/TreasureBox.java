@@ -9,6 +9,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
 import umc_haekathon_4.demo.domain.enums.Status;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class TreasureBox extends BaseEntity {
     @JsonManagedReference
     private List<Mission> missions=new ArrayList<>();
 
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     @Enumerated(EnumType.STRING)
     private Status status;
