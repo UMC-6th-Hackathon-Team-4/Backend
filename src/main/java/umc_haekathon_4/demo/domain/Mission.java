@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Mission {
+public class Mission extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "mission_id")
     private Long id;

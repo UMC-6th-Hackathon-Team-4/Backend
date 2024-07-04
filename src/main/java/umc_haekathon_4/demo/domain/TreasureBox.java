@@ -2,6 +2,7 @@ package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class TreasureBox {
+public class TreasureBox extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "treasure_box_id")
@@ -22,11 +23,12 @@ public class TreasureBox {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Memory> memories=new ArrayList<>();
 
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Mission> missions=new ArrayList<>();
 
     private LocalDateTime createdAt;
@@ -34,4 +36,5 @@ public class TreasureBox {
     private String status;
     private String title;
     private String location;
+    private  String body;
 }

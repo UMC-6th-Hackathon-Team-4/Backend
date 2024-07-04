@@ -1,9 +1,9 @@
 package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,7 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Memory {
+@Builder
+@AllArgsConstructor
+public class Memory extends BaseEntity {
     @Id @GeneratedValue
     @Column(name="memory_id")
     private Long id;
@@ -26,6 +28,7 @@ public class Memory {
     private LocalDateTime createdDate;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Image> images=new ArrayList<>();
 
     @ManyToOne
