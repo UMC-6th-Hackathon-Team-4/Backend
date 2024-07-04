@@ -1,6 +1,7 @@
 package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 public class Memory {
     @Id @GeneratedValue
     @Column(name="memory_id")

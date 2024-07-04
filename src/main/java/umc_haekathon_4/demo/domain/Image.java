@@ -26,4 +26,6 @@ public class Image {
     @JoinColumn(name = "memory_id")
     private Memory memory;
 
+    private String body;
+
 }
