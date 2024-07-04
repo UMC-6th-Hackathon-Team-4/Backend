@@ -1,9 +1,6 @@
 package umc_haekathon_4.demo.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -21,4 +18,8 @@ public class Mission {
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdDate;
+
+    @ManyToOne
+    @JoinColumn(name = "treasure_box_id", nullable = false)
+    private TeasureBox teasureBox;
 }
