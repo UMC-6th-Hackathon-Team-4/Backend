@@ -21,5 +21,4 @@ public class TreasureBoxResponseDTO {
         private String title;
         private String location;
     }
-
 }

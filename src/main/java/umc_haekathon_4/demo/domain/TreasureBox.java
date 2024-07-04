@@ -22,7 +22,6 @@ public class TreasureBox {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Memory> memories=new ArrayList<>();
 
