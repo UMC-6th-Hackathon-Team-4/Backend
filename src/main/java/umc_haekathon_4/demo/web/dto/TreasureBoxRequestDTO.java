@@ -18,4 +18,27 @@ public class TreasureBoxRequestDTO {
         private String location;
     }
 
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UpdateLocationDTO {
+        private String location;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UpdateStatusDTO {
+        private String status;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UpdateDeadlineDTO {
+        private LocalDateTime newDeadline;
+    }
 }
