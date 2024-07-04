@@ -19,6 +19,7 @@ public class TreasureBoxResponseDTO {
         private LocalDateTime deadline;
         private String status;
         private String title;
+        private String body;
         private String location;
     }
 

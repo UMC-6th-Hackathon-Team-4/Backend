@@ -13,12 +13,7 @@ public class TreasureBoxRequestDTO {
         private LocalDateTime deadline;
         private String status;
         private String title;
-        private String location;
-    }
-
-    @Getter
-    @Setter
-    public static class LocationBasedUnlockDTO {
+        private String body;
         private String location;
     }
 
