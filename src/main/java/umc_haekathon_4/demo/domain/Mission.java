@@ -1,5 +1,6 @@
 package umc_haekathon_4.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,8 @@ public class Mission extends BaseEntity {
 
     private String body;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "treasure_box_id", nullable = false)
+    @JsonBackReference
     private TreasureBox treasureBox;
 }

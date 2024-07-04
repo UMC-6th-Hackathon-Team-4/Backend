@@ -1,5 +1,6 @@
 package umc_haekathon_4.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
@@ -20,6 +21,7 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
+    @JsonManagedReference
     private List<TreasureBox> treasureBoxes = new ArrayList<>();
 
 }
