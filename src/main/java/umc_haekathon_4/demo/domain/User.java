@@ -20,6 +20,7 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<TreasureBox> treasureBoxes = new ArrayList<>();
 
 }
