@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
 
-    @Bean
+/*    @Bean
     public OpenAPI treasureAPI() {
         Info info = new Info()
                 .title("Treasure Box API")
@@ -36,7 +36,7 @@ public class SwaggerConfig {
                 .info(info)
                 .addSecurityItem(securityRequirement)
                 .components(components);
-    }
+    }*/
   
  
     @Bean

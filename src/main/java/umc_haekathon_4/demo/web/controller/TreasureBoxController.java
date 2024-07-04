@@ -12,6 +12,8 @@ import umc_haekathon_4.demo.service.TreasureBoxService;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor

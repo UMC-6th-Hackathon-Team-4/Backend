@@ -11,6 +11,8 @@ import umc_haekathon_4.demo.repository.UserRepository;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TreasureBoxService {
