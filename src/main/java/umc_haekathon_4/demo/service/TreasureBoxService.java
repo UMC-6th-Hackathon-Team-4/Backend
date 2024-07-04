@@ -27,4 +27,52 @@ public class TreasureBoxService {
         return treasureBoxRepository.save(treasureBox);
     }
 
+    public TreasureBox getTreasureBox(Long TreasureBoxId) {
+        return treasureBoxRepository.findById(TreasureBoxId)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+    }
+
+    public TreasureBoxResponseDTO setLocation(Long id, TreasureBoxRequestDTO.UpdateLocationDTO request) {
+        TreasureBox treasureBox = treasureBoxRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+
+        treasureBox.setLocation(request.getLocation());
+        treasureBox = treasureBoxRepository.save(treasureBox);
+        return TreasureBoxConverter.toDTO(treasureBox);
+    }
+
+    public String getLocation(Long id) {
+        TreasureBox treasureBox = treasureBoxRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+
+        return treasureBox.getLocation();
+    }
+
+    public TreasureBoxResponseDTO acceptAll(Long id) {
+        TreasureBox treasureBox = treasureBoxRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+
+        treasureBox.setStatus("accepted");
+
+        treasureBox = treasureBoxRepository.save(treasureBox);
+        return TreasureBoxConverter.toDTO(treasureBox);
+    }
+
+    public TreasureBoxResponseDTO updateStatus(Long id, TreasureBoxRequestDTO.UpdateStatusDTO request) {
+        TreasureBox treasureBox = treasureBoxRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+
+        treasureBox.setStatus(request.getStatus());
+        treasureBox = treasureBoxRepository.save(treasureBox);
+        return TreasureBoxConverter.toDTO(treasureBox);
+    }
+
+    public TreasureBoxResponseDTO delayDeadline(Long id, TreasureBoxRequestDTO.UpdateDeadlineDTO request) {
+        TreasureBox treasureBox = treasureBoxRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+
+        treasureBox.setDeadline(request.getNewDeadline());
+        treasureBox = treasureBoxRepository.save(treasureBox);
+        return TreasureBoxConverter.toDTO(treasureBox);
+    }
 }

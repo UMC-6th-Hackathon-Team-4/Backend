@@ -31,19 +31,11 @@ public class MemoryController {
         return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 
-//    //추억 제목 작성
-//    @PostMapping("/memory/upload/title")
-//    public ApiResponse<> updateMemoryTitle(Long memoryId,){
-//        memoryService.setTItle(memoryId,)
-//    }
-
-/*
-    //추억 내용 작성
-    @PostMapping("/memory/upload/write")
-
-    //추억 사진 올리기
-    @PostMapping("/memory/upload/{image_id}")
-    */
+/*    @PostMapping("/memory/upload-image")
+    private ApiResponse<MemoryResponseDTO> addImgToMem(Long memoryId, MultipartFile file){
+        MemoryResponseDTO updatedMemory = memoryService.addImgToMem(memoryId, file);
+        return ApiResponse.onSuccess(updatedMemory);
+    }*/
 
     //추억 조회
     @GetMapping("/memory")
