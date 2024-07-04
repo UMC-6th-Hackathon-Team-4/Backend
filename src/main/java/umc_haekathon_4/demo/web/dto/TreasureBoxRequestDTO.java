@@ -12,7 +12,7 @@ public class TreasureBoxRequestDTO {
     @NoArgsConstructor
     public static class CreateTreasureBoxDTO {
         private Long userId;
-        private LocalDateTime deadline;
+        private LocalDate deadline;
         private String status;
         private String title;
         private String body;
