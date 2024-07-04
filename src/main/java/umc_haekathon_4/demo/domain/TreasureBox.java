@@ -1,5 +1,7 @@
 package umc_haekathon_4.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
@@ -20,16 +22,19 @@ public class TreasureBox extends BaseEntity {
     @Column(name = "treasure_box_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
+    @JsonManagedReference
     private List<Memory> memories=new ArrayList<>();
 
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
+    @JsonManagedReference
     private List<Mission> missions=new ArrayList<>();
 
     private LocalDateTime deadline;
