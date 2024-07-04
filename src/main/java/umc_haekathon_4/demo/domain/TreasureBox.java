@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class TeasureBox {
+public class TreasureBox {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "treasure_box_id")

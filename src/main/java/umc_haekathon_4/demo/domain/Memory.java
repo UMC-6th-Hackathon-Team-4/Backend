@@ -3,15 +3,15 @@ package umc_haekathon_4.demo.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.Setter;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@Getter @Setter
 public class Memory {
     @Id @GeneratedValue
     @Column(name="memory_id")
@@ -21,7 +21,6 @@ public class Memory {
 
     private String memo;
 
-    @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdDate;
 
@@ -30,5 +29,5 @@ public class Memory {
 
     @ManyToOne
     @JoinColumn(name = "treasure_box_id", nullable = false)
-    private TeasureBox teasureBox;
+    private TreasureBox treasureBox;
 }
