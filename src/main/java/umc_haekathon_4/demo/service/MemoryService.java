@@ -24,7 +24,8 @@ public class MemoryService {
 
     public Memory createMemory(MemoryRequestDTO.CreateMemoryDto request) {
 
-        TreasureBox treasureBox=treasureBoxRepository.findById(request.getTreasureBoxId();
+        TreasureBox treasureBox=treasureBoxRepository.findById(request.getTreasureBoxId())
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
 
         List<Image> images=imageRepository.findAllById(request.getImageIds());
 

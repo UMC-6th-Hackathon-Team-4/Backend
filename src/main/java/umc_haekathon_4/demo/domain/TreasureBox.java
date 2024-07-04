@@ -31,7 +31,6 @@ public class TreasureBox extends BaseEntity {
     @Builder.Default
     private List<Mission> missions=new ArrayList<>();
 
-    private LocalDateTime createdAt;
     private LocalDateTime deadline;
     private String status;
     private String title;

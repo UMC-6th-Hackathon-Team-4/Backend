@@ -11,7 +11,7 @@ public class TreasureBoxConverter {
     public static TreasureBox toEntity(TreasureBoxRequestDTO.CreateTreasureBoxDTO dto, User user) {
         return TreasureBox.builder()
                 .user(user)
-                .createdAt(LocalDateTime.now())
+                //.createdDate(LocalDateTime.now())
                 .deadline(dto.getDeadline())
                 .status(dto.getStatus())
                 .title(dto.getTitle())

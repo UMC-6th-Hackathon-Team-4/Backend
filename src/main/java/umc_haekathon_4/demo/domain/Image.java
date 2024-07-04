@@ -17,10 +17,6 @@ public class Image extends BaseEntity {
     @Column(name = "image_id")
     private Long id;
 
-
-    @Column(name = "created_at")
-    private LocalDateTime createdDate;
-
     private String imgName;
     private String url;
 
