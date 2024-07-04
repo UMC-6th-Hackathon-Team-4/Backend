@@ -1,22 +1,20 @@
 package umc_haekathon_4.demo.web.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import umc_haekathon_4.demo.domain.TreasureBox;
-import umc_haekathon_4.demo.domain.User;
-
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 public class TreasureBoxRequestDTO {
     @Getter
-    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class CreateTreasureBoxDTO {
         private Long userId;
         private LocalDateTime deadline;
         private String status;
         private String title;
+        private String body;
         private String location;
     }
 

@@ -7,18 +7,17 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TreasureBoxResponseDTO {
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class TreasureBoxDTO {
-        private Long id;
-        private Long userId;
-        private LocalDateTime createdAt;
-        private LocalDateTime deadline;
-        private String status;
-        private String title;
-        private String location;
-    }
+    private Long id;
+    private Long userId;
+    private LocalDateTime createdAt;
+    private LocalDateTime deadline;
+    private String status;
+    private String title;
+    private String body;
+    private String location;
 }
