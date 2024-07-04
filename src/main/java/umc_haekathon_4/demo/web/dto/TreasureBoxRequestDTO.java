@@ -16,7 +16,8 @@ public class TreasureBoxRequestDTO {
         private String status;
         private String title;
         private String body;
-        private String location;
+        private double latitude;
+        private double longitude;
     }
 
     @Getter
@@ -24,7 +25,8 @@ public class TreasureBoxRequestDTO {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class UpdateLocationDTO {
-        private String location;
+        private double latitude;
+        private double longitude;
     }
 
     @Getter
@@ -41,5 +43,14 @@ public class TreasureBoxRequestDTO {
     @NoArgsConstructor
     public static class UpdateDeadlineDTO {
         private LocalDate newDeadline;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class initialLocationDTO {
+        private double latitude;
+        private double longitude;
     }
 }
