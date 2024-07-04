@@ -22,6 +22,8 @@ public class TreasureBoxConverter {
     public static TreasureBoxResponseDTO toDTO(TreasureBox treasureBox) {
         return TreasureBoxResponseDTO.builder()
                 .id(treasureBox.getId())
+                .userId(treasureBox.getUser().getId())
+                .createdAt(treasureBox.getCreatedAt())
                 .deadline(treasureBox.getDeadline())
                 .status(treasureBox.getStatus())
                 .title(treasureBox.getTitle())

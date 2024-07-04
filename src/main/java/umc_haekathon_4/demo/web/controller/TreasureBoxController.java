@@ -12,8 +12,6 @@ import umc_haekathon_4.demo.service.TreasureBoxService;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
@@ -27,7 +25,6 @@ public class TreasureBoxController {
         TreasureBox treasureBox = treasureBoxService.createTreasureBox(request);
         return ApiResponse.onSuccess(TreasureBoxConverter.toDTO(treasureBox));
     }
-
 
     //보물상자 리스트
     @GetMapping("/treasurebox/list")
