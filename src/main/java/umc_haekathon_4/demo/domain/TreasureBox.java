@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class TeasureBox {
+public class TreasureBox {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "treasure_box_id")
@@ -22,10 +22,10 @@ public class TeasureBox {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "treasure_box", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Memory> memories=new ArrayList<>();
 
-    @OneToMany(mappedBy = "treasure_box", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mission> missions=new ArrayList<>();
 
     private LocalDateTime createdAt;
