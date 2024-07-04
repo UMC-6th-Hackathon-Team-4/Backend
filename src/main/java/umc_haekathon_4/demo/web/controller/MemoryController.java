@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import umc_haekathon_4.demo.apiPayload.ApiResponse;
 import umc_haekathon_4.demo.converter.MemoryConverter;
 import umc_haekathon_4.demo.domain.Memory;
@@ -15,7 +16,7 @@ import umc_haekathon_4.demo.web.dto.MemoryResponseDTO;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class MemoryController {
@@ -29,19 +30,11 @@ public class MemoryController {
         return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 
-//    //추억 제목 작성
-//    @PostMapping("/memory/upload/title")
-//    public ApiResponse<> updateMemoryTitle(Long memoryId,){
-//        memoryService.setTItle(memoryId,)
-//    }
-
-/*
-    //추억 내용 작성
-    @PostMapping("/memory/upload/write")
-
-    //추억 사진 올리기
-    @PostMapping("/memory/upload/{image_id}")
-    */
+/*    @PostMapping("/memory/upload-image")
+    private ApiResponse<MemoryResponseDTO> addImgToMem(Long memoryId, MultipartFile file){
+        MemoryResponseDTO updatedMemory = memoryService.addImgToMem(memoryId, file);
+        return ApiResponse.onSuccess(updatedMemory);
+    }*/
 
     //추억 조회
     @GetMapping("/memory")
