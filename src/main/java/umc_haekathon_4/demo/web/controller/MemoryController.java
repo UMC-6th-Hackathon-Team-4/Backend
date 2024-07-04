@@ -29,20 +29,34 @@ public class MemoryController {
         return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 
-/*    //추억 제목
-    @PostMapping("/memory/upload/title")
+//    //추억 제목 작성
+//    @PostMapping("/memory/upload/title")
+//    public ApiResponse<> updateMemoryTitle(Long memoryId,){
+//        memoryService.setTItle(memoryId,)
+//    }
 
+/*
     //추억 내용 작성
     @PostMapping("/memory/upload/write")
 
     //추억 사진 올리기
     @PostMapping("/memory/upload/{image_id}")
+    */
 
     //추억 조회
     @GetMapping("/memory")
+    public ApiResponse<Memory> getMemory(Long memoryId) {
+        Memory memory = memoryService.getMemory(memoryId);
+        return ApiResponse.onSuccess(memory);
+    }
 
-    //추억 미리보기
-    @GetMapping("/memory-preview")*/
+
+    //모든 추억 미리보기
+    @GetMapping("/memory-preview")
+    public ApiResponse<List<Memory>> getAllMemories(){
+        List<Memory> memories = memoryService.getAllMemories();
+        return ApiResponse.onSuccess(memories);
+    }
 
 
 }

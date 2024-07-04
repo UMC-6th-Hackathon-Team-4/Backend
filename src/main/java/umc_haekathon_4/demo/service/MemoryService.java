@@ -23,13 +23,36 @@ public class MemoryService {
 
 
     public Memory createMemory(MemoryRequestDTO.CreateMemoryDto request) {
+        Memory memory = new Memory();
+        memory.setTitle(request.getTitle());
+        memory.setMemo(request.getMemo());
 
-        TreasureBox treasureBox=treasureBoxRepository.findById(request.getTreasureBoxId())
+        // Handle TreasureBox
+        TreasureBox treasureBox = treasureBoxRepository.findById(request.getTreasureBoxId())
                 .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+        memory.setTreasureBox(treasureBox);
 
-        List<Image> images=imageRepository.findAllById(request.getImageIds());
+        // Handle Images
+        List<Image> images = imageRepository.findAllById(request.getImageIds());
+        memory.setImages(images);
 
-        Memory memory = MemoryConverter.convertToEntity(request,images,treasureBox);
         return memoryRepository.save(memory);
+    }
+
+/*    public Memory setTitle(Long memoryId, String title){
+        Memory memory = memoryRepository.findById(memoryId)
+                .orElseThrow(() -> new RuntimeException("Memory not found"));
+        memory.setTitle(title);
+        return memoryRepository.save(memory);
+    }*/
+
+    public Memory getMemory(Long memoryId) {
+        return memoryRepository.findById(memoryId)
+                .orElseThrow(()->new RuntimeException("memory not found"));
+
+    }
+
+    public List<Memory> getAllMemories() {
+        return memoryRepository.findAll();
     }
 }
