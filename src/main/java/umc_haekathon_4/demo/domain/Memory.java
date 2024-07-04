@@ -27,4 +27,8 @@ public class Memory {
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images=new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "treasure_box_id", nullable = false)
+    private TeasureBox teasureBox;
 }
