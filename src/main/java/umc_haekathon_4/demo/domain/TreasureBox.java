@@ -2,6 +2,7 @@ package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class TreasureBox {
+public class TreasureBox extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "treasure_box_id")
