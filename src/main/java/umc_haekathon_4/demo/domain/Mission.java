@@ -21,5 +21,5 @@ public class Mission {
 
     @ManyToOne
     @JoinColumn(name = "treasure_box_id", nullable = false)
-    private TeasureBox teasureBox;
+    private TreasureBox treasureBox;
 }

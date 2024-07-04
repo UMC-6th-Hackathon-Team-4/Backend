@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/spring
+    url: jdbc:mysql://team4-dev.cdyqug0y0dy3.ap-northeast-2.rds.amazonaws.com:3306/team4DB
     username: root
-    password: mysql
+    password: team4database
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
@@ -15,7 +15,7 @@ spring:
         format_sql: true
         use_sql_comments: true
         hbm2ddl:
-          auto: update
+          auto: create
         default_batch_fetch_size: 1000
 springdoc:
   swagger-ui:
