@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,7 +18,9 @@ public class MemoryRequestDTO {
     public static class CreateMemoryDto{
         private String title;
         private String memo;
-        private List<Long> imageIds;
+        //private List<Long> imageIds;
         private Long treasureBoxId;
+
+        //MultipartFile memoryImage;
     }
 }

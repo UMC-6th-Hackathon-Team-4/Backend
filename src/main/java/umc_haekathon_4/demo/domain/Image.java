@@ -2,10 +2,7 @@ package umc_haekathon_4.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -13,6 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 public class Image extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "image_id")
