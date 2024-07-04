@@ -23,9 +23,11 @@ public class TreasureBox {
     private User user;
 
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Memory> memories=new ArrayList<>();
 
     @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Mission> missions=new ArrayList<>();
 
     private LocalDateTime createdAt;

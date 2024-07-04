@@ -1,8 +1,7 @@
 package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,7 +9,10 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 public class Memory {
     @Id @GeneratedValue
     @Column(name="memory_id")
@@ -24,6 +26,7 @@ public class Memory {
     private LocalDateTime createdDate;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Image> images=new ArrayList<>();
 
     @ManyToOne
