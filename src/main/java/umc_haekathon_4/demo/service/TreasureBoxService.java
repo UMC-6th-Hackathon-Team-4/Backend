@@ -27,4 +27,8 @@ public class TreasureBoxService {
         return treasureBoxRepository.save(treasureBox);
     }
 
+    public TreasureBox getTreasureBox(Long TreasureBoxId) {
+        return treasureBoxRepository.findById(TreasureBoxId)
+                .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
+    }
 }

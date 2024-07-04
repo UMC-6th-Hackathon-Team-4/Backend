@@ -24,13 +24,15 @@ public class TreasureBoxController {
         return ApiResponse.onSuccess(TreasureBoxConverter.toDTO(treasureBox));
     }
 
-    /*
-    // 보물상자 제목
-    @PostMapping("/treasurebox/title")
 
-    // 보물상자 조회
+    //보물상자 조회
     @GetMapping("/treasurebox/list")
+    public ApiResponse<TreasureBox> getTreasureBox(Long treasureId) {
+        TreasureBox treasureBox = treasureBoxService.getTreasureBox(treasureId);
+        return ApiResponse.onSuccess(treasureBox);
+    }
 
+    /*
     // 위치 기반 보물상자 열람
     @PostMapping("/treasurebox/{id}/location")
 
