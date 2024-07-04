@@ -14,8 +14,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
+@Builder
 public class MemoryResponseDTO {
 
         private Long id;

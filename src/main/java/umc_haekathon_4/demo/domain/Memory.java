@@ -1,8 +1,12 @@
 package umc_haekathon_4.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
+
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,8 +14,11 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Getter @Setter
-public class Memory {
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+public class Memory extends BaseEntity {
     @Id @GeneratedValue
     @Column(name="memory_id")
     private Long id;
@@ -20,13 +27,14 @@ public class Memory {
 
     private String memo;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdDate;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    @JsonManagedReference
     private List<Image> images=new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "treasure_box_id", nullable = false)
+    @JsonBackReference
     private TreasureBox treasureBox;
 }
