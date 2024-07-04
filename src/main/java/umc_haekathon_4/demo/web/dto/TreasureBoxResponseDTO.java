@@ -19,5 +19,6 @@ public class TreasureBoxResponseDTO {
     private String status;
     private String title;
     private String body;
-    private String location;
+    private double latitude;
+    private double longitude;
 }

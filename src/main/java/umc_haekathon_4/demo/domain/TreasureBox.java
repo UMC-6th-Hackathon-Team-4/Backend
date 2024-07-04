@@ -40,6 +40,8 @@ public class TreasureBox extends BaseEntity {
     private LocalDateTime deadline;
     private String status;
     private String title;
-    private String location;
     private  String body;
+
+    private double latitude;
+    private double longitude;
 }

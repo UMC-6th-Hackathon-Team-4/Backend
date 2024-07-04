@@ -35,17 +35,23 @@ public class TreasureBoxController {
 
     // 위치 기반 보물상자 열람
     @PostMapping("/treasurebox/{id}/location")
-    public ApiResponse<TreasureBoxResponseDTO> setLocation(@PathVariable Long id, @RequestBody @Valid TreasureBoxRequestDTO.UpdateLocationDTO request) {
-        TreasureBoxResponseDTO treasureBox = treasureBoxService.setLocation(id, request);
-        return ApiResponse.onSuccess(treasureBox);
+    public ApiResponse<TreasureBoxResponseDTO> setLocation(@PathVariable Long id, @RequestBody @Valid TreasureBoxRequestDTO.initialLocationDTO request) {
+        boolean canOpen = treasureBoxService.canOpenTreasureBox(id, request);
+        if (canOpen) {
+            return ApiResponse.onSuccess(treasureBoxService.openTreasureBox(id));
+        } else {
+            return ApiResponse.onFailure("400", "User is not within the required distance to open the treasure box", null);
+        }
     }
 
+    /*
     // 보물상자 위치
     @GetMapping("/treasurebox/{id}/location")
     public ApiResponse<String> getLocation(@PathVariable Long id) {
-        String location = treasureBoxService.getLocation(id);
+        double[] location = treasureBoxService.getLocation(id);
         return ApiResponse.onSuccess(location);
     }
+    */
 
     // 전체 수락 후 보물상자 열람
     @PostMapping("/treasurebox/{id}/all_accept")

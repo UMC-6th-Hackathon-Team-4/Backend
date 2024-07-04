@@ -11,8 +11,9 @@ public class TreasureBoxConverter {
     public static TreasureBox toEntity(TreasureBoxRequestDTO.CreateTreasureBoxDTO createTreasureboxDTO, User user) {
         TreasureBox treasureBox = new TreasureBox();
         treasureBox.setTitle(createTreasureboxDTO.getTitle());
-        treasureBox.setLocation(createTreasureboxDTO.getLocation());
         treasureBox.setBody(createTreasureboxDTO.getBody());
+        treasureBox.setLatitude(createTreasureboxDTO.getLatitude());
+        treasureBox.setLongitude(createTreasureboxDTO.getLongitude());
         treasureBox.setDeadline(createTreasureboxDTO.getDeadline());
         treasureBox.setUser(user);
         return treasureBox;
@@ -26,7 +27,8 @@ public class TreasureBoxConverter {
                 .deadline(treasureBox.getDeadline())
                 .status(treasureBox.getStatus())
                 .title(treasureBox.getTitle())
-                .location(treasureBox.getLocation())
+                .latitude(treasureBox.getLatitude())
+                .longitude(treasureBox.getLongitude())
                 .build();
     }
 }
