@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
 
@@ -17,8 +19,10 @@ import java.util.List;
 @Setter
 @Builder
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Memory extends BaseEntity {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="memory_id")
     private Long id;
 
@@ -33,7 +37,7 @@ public class Memory extends BaseEntity {
     private List<Image> images=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "treasure_box_id", nullable = false)
+    @JoinColumn(name = "treasure_box_id")
     @JsonBackReference
     private TreasureBox treasureBox;
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -13,8 +15,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@DynamicInsert
+@DynamicUpdate
 public class Mission extends BaseEntity {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mission_id")
     private Long id;
 

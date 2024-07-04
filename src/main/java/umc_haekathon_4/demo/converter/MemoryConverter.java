@@ -21,7 +21,7 @@ public class MemoryConverter {
 
     public static MemoryResponseDTO convertToDto(Memory memory){
         return MemoryResponseDTO.builder()
-                .id(memory.getId())
+                .memoryId(memory.getId())
                 .createdDate(memory.getCreatedAt())
                 .build();
 
