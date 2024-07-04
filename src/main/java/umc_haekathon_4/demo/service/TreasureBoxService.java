@@ -11,6 +11,8 @@ import umc_haekathon_4.demo.repository.UserRepository;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TreasureBoxService {
@@ -73,5 +75,9 @@ public class TreasureBoxService {
         treasureBox.setDeadline(request.getNewDeadline());
         treasureBox = treasureBoxRepository.save(treasureBox);
         return TreasureBoxConverter.toDTO(treasureBox);
+    }
+
+    public List<TreasureBox> getTreasureBoxes() {
+        return treasureBoxRepository.findAll();
     }
 }

@@ -14,11 +14,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class TreasureBoxResponseDTO {
     private Long id;
-    private Long userId;
-    private LocalDateTime createdAt;
     private LocalDate deadline;
     private String status;
     private String title;
-    private String body;
-    private String location;
+    //private String body;
+    //private String location;
 }
