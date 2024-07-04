@@ -11,6 +11,8 @@ import umc_haekathon_4.demo.repository.UserRepository;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TreasureBoxService {
@@ -80,6 +82,10 @@ public class TreasureBoxService {
         return TreasureBoxConverter.toDTO(treasureBox);
     }
 
+
+    public List<TreasureBox> getTreasureBoxes() {
+        return treasureBoxRepository.findAll();
+
     public boolean canOpenTreasureBox(Long id, TreasureBoxRequestDTO.initialLocationDTO userLocation) {
         TreasureBox treasureBox = treasureBoxRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TreasureBox not found"));
@@ -114,5 +120,6 @@ public class TreasureBoxService {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double distance = R * c * 1000; // convert to meters
         return distance;
+
     }
 }
