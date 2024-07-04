@@ -22,10 +22,10 @@ public class TreasureBox {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "treasure_box", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Memory> memories=new ArrayList<>();
 
-    @OneToMany(mappedBy = "treasure_box", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "treasureBox", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mission> missions=new ArrayList<>();
 
     private LocalDateTime createdAt;
