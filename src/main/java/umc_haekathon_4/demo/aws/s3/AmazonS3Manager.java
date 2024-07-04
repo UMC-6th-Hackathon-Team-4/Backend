@@ -17,30 +17,30 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AmazonS3Manager{
 
-    private final AmazonS3 amazonS3;
-
-    private final AmazonConfig amazonConfig;
-
-    @Value(("${cloud.aws.S3.bucket}"))
-    private String bucket;
-
-    private final UuidRepository uuidRepository;
-
-    public String uploadFile(String keyName, MultipartFile file) {
-        ObjectMetadata metadata = new ObjectMetadata();
-        metadata.setContentLength(file.getSize());
-        try {
-            amazonS3.putObject(new PutObjectRequest(amazonConfig.getBucket(), keyName, file.getInputStream(), metadata));
-        }
-        catch (IOException e) {
-            log.error("error at AmazonS3Manager uploadFile : {}", (Object) e.getStackTrace());
-        }
-        return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
-    }
-
-    public String generateReviewKeyName(Uuid uuid) {
-        return amazonConfig.getReviewPath() + '/' + uuid.getUuid();
-    }
+//    private final AmazonS3 amazonS3;
+//
+//    private final AmazonConfig amazonConfig;
+//
+//    @Value(("${cloud.aws.S3.bucket}"))
+//    private String bucket;
+//
+//    private final UuidRepository uuidRepository;
+//
+//    public String uploadFile(String keyName, MultipartFile file) {
+//        ObjectMetadata metadata = new ObjectMetadata();
+//        metadata.setContentLength(file.getSize());
+//        try {
+//            amazonS3.putObject(new PutObjectRequest(amazonConfig.getBucket(), keyName, file.getInputStream(), metadata));
+//        }
+//        catch (IOException e) {
+//            log.error("error at AmazonS3Manager uploadFile : {}", (Object) e.getStackTrace());
+//        }
+//        return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
+//    }
+//
+//    public String generateReviewKeyName(Uuid uuid) {
+//        return amazonConfig.getReviewPath() + '/' + uuid.getUuid();
+//    }
 
 
 }
