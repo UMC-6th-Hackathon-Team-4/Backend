@@ -24,7 +24,7 @@ public class TreasureBoxConverter {
                 .userId(treasureBox.getUser().getId())
                 .createdAt(treasureBox.getCreatedAt())
                 .deadline(treasureBox.getDeadline())
-                .status(treasureBox.getStatus())
+                .status(treasureBox.getStatus().toString())
                 .title(treasureBox.getTitle())
                 .location(treasureBox.getLocation())
                 .build();
