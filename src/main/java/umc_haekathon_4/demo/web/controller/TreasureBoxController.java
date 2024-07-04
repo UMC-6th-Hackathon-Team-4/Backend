@@ -22,6 +22,7 @@ public class TreasureBoxController {
 
     //보물상자 생성
     @PostMapping("/treasurebox")
+    @Operation(summary = "보물상자 생성", description = "보물상자를 생성하는 API")
     public ApiResponse<TreasureBoxResponseDTO> create(@RequestBody @Valid TreasureBoxRequestDTO.CreateTreasureBoxDTO request) {
         TreasureBox treasureBox = treasureBoxService.createTreasureBox(request);
         return ApiResponse.onSuccess(TreasureBoxConverter.toDTO(treasureBox));
@@ -30,6 +31,7 @@ public class TreasureBoxController {
 
     //보물상자 리스트
     @GetMapping("/treasurebox/list")
+    @Operation(summary = "보물상자 리스트", description = "보물상자의 목록을 조회하는 API")
     public ApiResponse<List<TreasureBox>> getTreasureBoxes() {
         List<TreasureBox> treasureBoxes = treasureBoxService.getTreasureBoxes();
         return ApiResponse.onSuccess(treasureBoxes);
@@ -37,6 +39,7 @@ public class TreasureBoxController {
 
     //보물상자 조회
     @GetMapping("/treasurebox/list/choose")
+    @Operation(summary = "보물상자 하나 조회", description = "보물상자 하나를 조회하는 API")
     public ApiResponse<TreasureBox> getTreasureBox(Long treasureId) {
         TreasureBox treasureBox = treasureBoxService.getTreasureBox(treasureId);
         return ApiResponse.onSuccess(treasureBox);
@@ -45,6 +48,7 @@ public class TreasureBoxController {
 
     // 위치 기반 보물상자 열람
     @PostMapping("/treasurebox/{id}/location")
+    @Operation(summary = "보물상자 위치 기반 열람", description = "보물상자를 위도와 경도를 입력해 위치를 확인하고 여는 API")
     public ApiResponse<TreasureBoxResponseDTO> setLocation(@PathVariable Long id, @RequestBody @Valid TreasureBoxRequestDTO.initialLocationDTO request) {
         boolean canOpen = treasureBoxService.canOpenTreasureBox(id, request);
         if (canOpen) {

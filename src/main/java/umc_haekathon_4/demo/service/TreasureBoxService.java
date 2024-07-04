@@ -85,6 +85,7 @@ public class TreasureBoxService {
 
     public List<TreasureBox> getTreasureBoxes() {
         return treasureBoxRepository.findAll();
+    }
 
     public boolean canOpenTreasureBox(Long id, TreasureBoxRequestDTO.initialLocationDTO userLocation) {
         TreasureBox treasureBox = treasureBoxRepository.findById(id)
