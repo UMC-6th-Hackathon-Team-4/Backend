@@ -8,19 +8,17 @@ import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 import java.time.LocalDateTime;
 
 public class TreasureBoxConverter {
-    public static TreasureBox toEntity(TreasureBoxRequestDTO.CreateTreasureBoxDTO dto, User user) {
-        return TreasureBox.builder()
-                .user(user)
-                //.createdDate(LocalDateTime.now())
-                .deadline(dto.getDeadline())
-                .status(dto.getStatus())
-                .title(dto.getTitle())
-                .location(dto.getLocation())
-                .build();
+    public static TreasureBox toEntity(TreasureBoxRequestDTO.CreateTreasureBoxDTO createTreasureboxDTO, User user) {
+        TreasureBox treasureBox = new TreasureBox();
+        treasureBox.setTitle(createTreasureboxDTO.getTitle());
+        treasureBox.setLocation(createTreasureboxDTO.getLocation());
+        treasureBox.setBody(createTreasureboxDTO.getBody());
+        treasureBox.setDeadline(createTreasureboxDTO.getDeadline());
+        return treasureBox;
     }
 
-    public static TreasureBoxResponseDTO.TreasureBoxDTO toDTO(TreasureBox treasureBox) {
-        return TreasureBoxResponseDTO.TreasureBoxDTO.builder()
+    public static TreasureBoxResponseDTO toDTO(TreasureBox treasureBox) {
+        return TreasureBoxResponseDTO.builder()
                 .id(treasureBox.getId())
                 .userId(treasureBox.getUser().getId())
                 .createdAt(treasureBox.getCreatedAt())

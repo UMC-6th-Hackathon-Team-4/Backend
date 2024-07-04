@@ -3,10 +3,9 @@ package umc_haekathon_4.demo.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
-
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
