@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import umc_haekathon_4.demo.apiPayload.ApiResponse;
+import umc_haekathon_4.demo.converter.MemoryConverter;
 import umc_haekathon_4.demo.domain.Memory;
 import umc_haekathon_4.demo.service.MemoryService;
 import umc_haekathon_4.demo.web.dto.MemoryRequestDTO;
@@ -23,12 +24,12 @@ public class MemoryController {
 
     //추억 등록
     @PostMapping("/memory/upload")
-    public ApiResponse<MemoryResponseDTO.MemoryResponseDTOBuilder> create(@RequestBody @Valid MemoryRequestDTO.CreateMemoryDto request) {
-        Memory memory = memoryService.createMemory(title, memo, treasureBoxId, imageIds);
-        return null;
+    public ApiResponse<MemoryResponseDTO> create(@RequestBody @Valid MemoryRequestDTO.CreateMemoryDto request) {
+        Memory memory = memoryService.createMemory(request);
+        return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 
-    //추억 제목
+/*    //추억 제목
     @PostMapping("/memory/upload/title")
 
     //추억 내용 작성
@@ -41,7 +42,7 @@ public class MemoryController {
     @GetMapping("/memory")
 
     //추억 미리보기
-    @GetMapping("/memory-preview")
+    @GetMapping("/memory-preview")*/
 
 
 }

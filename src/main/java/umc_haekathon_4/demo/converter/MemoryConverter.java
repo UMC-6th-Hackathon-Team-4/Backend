@@ -7,7 +7,6 @@ import umc_haekathon_4.demo.web.dto.MemoryRequestDTO;
 import umc_haekathon_4.demo.web.dto.MemoryResponseDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MemoryConverter {
 
@@ -26,7 +25,7 @@ public class MemoryConverter {
                 .id(memory.getId())
                 .title(memory.getTitle())
                 .memo(memory.getMemo())
-                .createdDate(memory.getCreatedDate())
+                .createdDate(memory.getCreatedAt())
                 .images(memory.getImages())
                 .treasureBox(memory.getTreasureBox())
                 .build();
