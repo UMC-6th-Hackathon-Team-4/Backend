@@ -7,7 +7,6 @@ import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
-import umc_haekathon_4.demo.domain.enums.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,8 +44,7 @@ public class TreasureBox extends BaseEntity {
 
     private LocalDate deadline;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
     private String title;
     private String location;
     private  String body;
