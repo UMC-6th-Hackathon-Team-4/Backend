@@ -6,28 +6,23 @@ import umc_haekathon_4.demo.domain.TreasureBox;
 import umc_haekathon_4.demo.web.dto.MemoryRequestDTO;
 import umc_haekathon_4.demo.web.dto.MemoryResponseDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemoryConverter {
 
-    public static Memory convertToEntity(MemoryRequestDTO.CreateMemoryDto createMemoryDto, List<Image> images,TreasureBox treasureBox){
-        Memory memory=new Memory();
-        memory.setTitle(createMemoryDto.getTitle());
-        memory.setMemo(createMemoryDto.getMemo());
-        memory.setTreasureBox(treasureBox);
-        memory.setImages(images);
+    public static Memory convertToEntity(MemoryRequestDTO.CreateMemoryDto request){
+        return  Memory.builder()
+                .title(request.getTitle())
+                .memo(request.getMemo())
+                .images(new ArrayList<>()).build();
 
-        return memory;
     }
 
     public static MemoryResponseDTO convertToDto(Memory memory){
         return MemoryResponseDTO.builder()
                 .id(memory.getId())
-                .title(memory.getTitle())
-                .memo(memory.getMemo())
                 .createdDate(memory.getCreatedAt())
-                .images(memory.getImages())
-                .treasureBox(memory.getTreasureBox())
                 .build();
 
     }

@@ -25,10 +25,17 @@ public class MemoryController {
     private final MemoryService memoryService;
 
     //추억 등록
+
     @PostMapping("/memory/upload")
     @Operation(summary = "추억 등록", description = "새로운 추억을 등록합니다.")
     public ApiResponse<MemoryResponseDTO> create(@RequestBody @Valid MemoryRequestDTO.CreateMemoryDto request) {
         Memory memory = memoryService.createMemory(request);
+
+  /*  @PostMapping(value = "/memory/upload", consumes = "multipart/form-data")
+    public ApiResponse<MemoryResponseDTO> create(@Valid MemoryRequestDTO.CreateMemoryDto request,
+                                                 @RequestPart MultipartFile file) {
+        Memory memory = memoryService.createMemory(request, file); */
+
         return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 

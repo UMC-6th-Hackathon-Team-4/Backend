@@ -3,13 +3,17 @@ package umc_haekathon_4.demo.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import umc_haekathon_4.demo.aws.s3.AmazonS3Manager;
+import umc_haekathon_4.demo.converter.ImageConverter;
 import umc_haekathon_4.demo.converter.MemoryConverter;
 import umc_haekathon_4.demo.domain.Image;
 import umc_haekathon_4.demo.domain.Memory;
 import umc_haekathon_4.demo.domain.TreasureBox;
+import umc_haekathon_4.demo.domain.Uuid;
 import umc_haekathon_4.demo.repository.ImageRepository;
 import umc_haekathon_4.demo.repository.MemoryRepository;
 import umc_haekathon_4.demo.repository.TreasureBoxRepository;
+import umc_haekathon_4.demo.repository.UuidRepository;
 import umc_haekathon_4.demo.web.dto.MemoryRequestDTO;
 import umc_haekathon_4.demo.web.dto.MemoryResponseDTO;
 
@@ -17,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -25,12 +30,19 @@ public class MemoryService {
     private final MemoryRepository memoryRepository;
     private final TreasureBoxRepository treasureBoxRepository;
     private final ImageRepository imageRepository;
+    private final AmazonS3Manager s3Manager;
+    private final UuidRepository uuidRepository;
 
 
-    public Memory createMemory(MemoryRequestDTO.CreateMemoryDto request) {
-        Memory memory = new Memory();
-        memory.setTitle(request.getTitle());
-        memory.setMemo(request.getMemo());
+    public Memory createMemory(MemoryRequestDTO.CreateMemoryDto request, MultipartFile file) {
+        Memory memory = MemoryConverter.convertToEntity(request);
+
+        // S3
+        String uuid = UUID.randomUUID().toString();
+        Uuid savedUuid = uuidRepository.save(Uuid.builder()
+                .uuid(uuid).build());
+
+        String imageUrl = s3Manager.uploadFile(s3Manager.generateReviewKeyName(savedUuid), file);
 
         // Handle TreasureBox
         TreasureBox treasureBox = treasureBoxRepository.findById(request.getTreasureBoxId())
@@ -38,8 +50,11 @@ public class MemoryService {
         memory.setTreasureBox(treasureBox);
 
         // Handle Images
-        List<Image> images = imageRepository.findAllById(request.getImageIds());
-        memory.setImages(images);
+//        List<Image> images = imageRepository.findAllById(request.getImageIds());
+//        memory.setImages(images);
+
+        // S3
+        imageRepository.save(ImageConverter.toImage(imageUrl, memory));
 
         return memoryRepository.save(memory);
     }
