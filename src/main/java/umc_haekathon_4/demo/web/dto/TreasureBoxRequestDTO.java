@@ -2,15 +2,13 @@ package umc_haekathon_4.demo.web.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import umc_haekathon_4.demo.domain.TreasureBox;
-import umc_haekathon_4.demo.domain.User;
 
 import java.time.LocalDateTime;
 
 public class TreasureBoxRequestDTO {
     @Getter
     @Setter
-    public static class CreateTreasureBoxDTO {
+    public static class CreateTreasureBoxDto {
         private Long userId;
         private LocalDateTime deadline;
         private String status;
@@ -20,7 +18,8 @@ public class TreasureBoxRequestDTO {
 
     @Getter
     @Setter
-    public static class LocationBasedUnlockDTO {
+    public static class LocationBasedUnlockDto {
         private String location;
     }
+
 }

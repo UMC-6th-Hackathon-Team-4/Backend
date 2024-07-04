@@ -1,13 +1,16 @@
 package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
+@Getter
+@Setter
 public class Mission {
     @Id @GeneratedValue
     @Column(name = "mission_id")
@@ -15,11 +18,10 @@ public class Mission {
 
     private String body;
 
-    @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdDate;
 
     @ManyToOne
     @JoinColumn(name = "treasure_box_id", nullable = false)
-    private TreasureBox teasureBox;
+    private TreasureBox treasureBox;
 }
