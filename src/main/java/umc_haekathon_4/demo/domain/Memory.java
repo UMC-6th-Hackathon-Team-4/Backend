@@ -2,6 +2,7 @@ package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Timestamp;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@NoArgsConstructor
 public class Memory {
     @Id @GeneratedValue
     @Column(name="memory_id")
