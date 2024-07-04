@@ -2,6 +2,7 @@ package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
 @Setter
 @Builder
 @AllArgsConstructor
-public class Memory {
+public class Memory extends BaseEntity {
     @Id @GeneratedValue
     @Column(name="memory_id")
     private Long id;

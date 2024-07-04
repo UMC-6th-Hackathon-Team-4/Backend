@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import umc_haekathon_4.demo.domain.common.BaseEntity;
+
 import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter @Setter
-public class Image {
+public class Image extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "image_id")
     private Long id;
