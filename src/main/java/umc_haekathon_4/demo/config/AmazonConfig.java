@@ -41,4 +41,5 @@ public class AmazonConfig {
 //
 //    @Bean
 //    public AWSCredentialsProvider awsCredentialsProvider() { return new AWSStaticCredentialsProvider(awsCredentials); }
+
 }
