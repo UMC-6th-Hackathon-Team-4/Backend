@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import umc_haekathon_4.demo.apiPayload.ApiResponse;
 import umc_haekathon_4.demo.converter.MemoryConverter;
 import umc_haekathon_4.demo.domain.Memory;
@@ -23,9 +24,10 @@ public class MemoryController {
     private final MemoryService memoryService;
 
     //추억 등록
-    @PostMapping("/memory/upload")
-    public ApiResponse<MemoryResponseDTO> create(@RequestBody @Valid MemoryRequestDTO.CreateMemoryDto request) {
-        Memory memory = memoryService.createMemory(request);
+    @PostMapping(value = "/memory/upload", consumes = "multipart/form-data")
+    public ApiResponse<MemoryResponseDTO> create(@Valid MemoryRequestDTO.CreateMemoryDto request,
+                                                 @RequestPart MultipartFile file) {
+        Memory memory = memoryService.createMemory(request, file);
         return ApiResponse.onSuccess(MemoryConverter.convertToDto(memory));
     }
 

@@ -19,9 +19,5 @@ import java.util.List;
 public class MemoryResponseDTO {
 
         private Long id;
-        private String title;
-        private String memo;
         private LocalDateTime createdDate;
-        private List<Image> images;
-        private TreasureBox treasureBox;
 }
