@@ -3,6 +3,8 @@ package umc_haekathon_4.demo.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -12,8 +14,10 @@ import java.time.LocalDateTime;
 @Getter @Setter
 @Builder
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Image extends BaseEntity {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "image_id")
     private Long id;
 

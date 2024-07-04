@@ -18,6 +18,6 @@ import java.util.List;
 @Builder
 public class MemoryResponseDTO {
 
-        private Long id;
+        private Long memoryId;
         private LocalDateTime createdDate;
 }
