@@ -36,4 +36,5 @@ public class TreasureBox extends BaseEntity {
     private String status;
     private String title;
     private String location;
+    private  String body;
 }

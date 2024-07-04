@@ -1,8 +1,10 @@
 package umc_haekathon_4.demo.domain;
 
 import jakarta.persistence.*;
+
 import lombok.*;
 import umc_haekathon_4.demo.domain.common.BaseEntity;
+
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

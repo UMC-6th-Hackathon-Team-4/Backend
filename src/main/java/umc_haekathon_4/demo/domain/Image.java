@@ -28,4 +28,6 @@ public class Image extends BaseEntity {
     @JoinColumn(name = "memory_id")
     private Memory memory;
 
+    private String body;
+
 }
