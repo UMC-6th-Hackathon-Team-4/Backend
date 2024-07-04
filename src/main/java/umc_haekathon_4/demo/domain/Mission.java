@@ -19,9 +19,6 @@ public class Mission extends BaseEntity {
 
     private String body;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdDate;
-
     @ManyToOne
     @JoinColumn(name = "treasure_box_id", nullable = false)
     private TreasureBox treasureBox;

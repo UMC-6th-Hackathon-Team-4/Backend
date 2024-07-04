@@ -20,9 +20,4 @@ public class TreasureBoxRequestDTO {
         private String location;
     }
 
-    @Getter
-    @Setter
-    public static class LocationBasedUnlockDTO {
-        private String location;
-    }
 }

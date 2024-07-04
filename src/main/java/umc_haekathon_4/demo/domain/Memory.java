@@ -25,8 +25,6 @@ public class Memory extends BaseEntity {
 
     private String memo;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdDate;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
