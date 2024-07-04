@@ -33,7 +33,7 @@ public class MemoryController {
 
     @PostMapping(value = "/memory/upload", consumes = "multipart/form-data")
     @Operation(summary = "추억 등록", description = "새로운 추억을 등록합니다.")
-    public ApiResponse<MemoryResponseDTO> create(@Valid MemoryRequestDTO.CreateMemoryDto request,
+    public ApiResponse<MemoryResponseDTO> createMemory(@Valid MemoryRequestDTO.CreateMemoryDto request,
                                                  @RequestPart MultipartFile file) {
         Memory memory = memoryService.createMemory(request, file);
 

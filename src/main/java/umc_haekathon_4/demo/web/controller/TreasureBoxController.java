@@ -12,6 +12,8 @@ import umc_haekathon_4.demo.service.TreasureBoxService;
 import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class TreasureBoxController {
     //보물상자 생성
     @PostMapping("/treasurebox")
     @Operation(summary = "보물상자 생성", description = "보물상자를 생성하는 API")
-    public ApiResponse<TreasureBoxResponseDTO> create(@RequestBody @Valid TreasureBoxRequestDTO.CreateTreasureBoxDTO request) {
+    public ApiResponse<TreasureBoxResponseDTO> createTreasureBox(@RequestBody @Valid TreasureBoxRequestDTO.CreateTreasureBoxDTO request) {
         TreasureBox treasureBox = treasureBoxService.createTreasureBox(request);
         return ApiResponse.onSuccess(TreasureBoxConverter.toDTO(treasureBox));
     }
