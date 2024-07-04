@@ -18,7 +18,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class Memory extends BaseEntity {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="memory_id")
     private Long id;
 
