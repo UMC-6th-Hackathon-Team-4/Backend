@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 @Builder
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class TreasureBox extends BaseEntity {
     @Id
