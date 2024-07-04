@@ -39,7 +39,7 @@ public class TreasureBoxController {
     //보물상자 조회
     @GetMapping("/treasurebox/list/choose")
     @Operation(summary = "보물상자 하나 조회", description = "보물상자 하나를 조회하는 API")
-    public ApiResponse<TreasureBox> getTreasureBox(Long treasureId) {
+    public ApiResponse<TreasureBox> getTreasureBox(@RequestParam Long treasureId) {
         TreasureBox treasureBox = treasureBoxService.getTreasureBox(treasureId);
         return ApiResponse.onSuccess(treasureBox);
     }
