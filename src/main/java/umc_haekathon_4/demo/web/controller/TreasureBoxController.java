@@ -2,6 +2,8 @@ package umc_haekathon_4.demo.web.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import umc_haekathon_4.demo.web.dto.TreasureBoxRequestDTO;
 import umc_haekathon_4.demo.web.dto.TreasureBoxResponseDTO;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
@@ -23,7 +26,7 @@ public class TreasureBoxController {
     //보물상자 생성
     @PostMapping("/treasurebox")
     @Operation(summary = "보물상자 생성", description = "보물상자를 생성하는 API")
-    public ApiResponse<TreasureBoxResponseDTO> create(@RequestBody @Valid TreasureBoxRequestDTO.CreateTreasureBoxDTO request) {
+    public ApiResponse<TreasureBoxResponseDTO> createTreasureBox(@RequestBody @Valid TreasureBoxRequestDTO.CreateTreasureBoxDTO request) {
         TreasureBox treasureBox = treasureBoxService.createTreasureBox(request);
         return ApiResponse.onSuccess(TreasureBoxConverter.toDTO(treasureBox));
     }
@@ -31,9 +34,23 @@ public class TreasureBoxController {
     //보물상자 리스트
     @GetMapping("/treasurebox/list")
     @Operation(summary = "보물상자 리스트", description = "보물상자의 목록을 조회하는 API")
-    public ApiResponse<List<TreasureBox>> getTreasureBoxes() {
+    public ApiResponse<Result> getTreasureBoxes() {
         List<TreasureBox> treasureBoxes = treasureBoxService.getTreasureBoxes();
-        return ApiResponse.onSuccess(treasureBoxes);
+        List<TreasureBoxResponseDTO> collect = treasureBoxes.stream()
+                .map(m -> new TreasureBoxResponseDTO().builder()
+                        .id(m.getId())
+                        .deadline(m.getDeadline())
+                        .status(m.getStatus())
+                        .title(m.getTitle())
+                        .build())
+                .collect(Collectors.toList());
+        return ApiResponse.onSuccess(new Result(collect));
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T> {
+        private T data;
     }
 
     //보물상자 조회
